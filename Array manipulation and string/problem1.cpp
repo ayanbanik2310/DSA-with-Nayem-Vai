@@ -14,18 +14,19 @@ int main()
     {   
         if(s[i] == ' ')
         {
-            cout<<len<<endl;
+            cout<<" "<<len<<endl;
             len = 0;
             i++;
         }
         else
         {
+            cout<<s[i];
             len++;
             i++;
         }
 
     }
-    cout<<len;
+    cout<<" "<<len;
 
     
     return 0;
