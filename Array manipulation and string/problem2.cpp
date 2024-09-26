@@ -21,21 +21,16 @@ int main()
 
     for(int i=0; i<26; i++)
     {
-        if(freq[i] != 0)
-        {
-            ch.push_back(char(i+'a'));
-            v.push_back(freq[i]);
-            mxheight = max(mxheight, freq[i]);
-        }
+        if(mxheight<freq[i]) mxheight = freq[i];
     }
 
 
 
     for(int height = mxheight; height>0; height--)
     {
-        for(int j = 0; j<v.size(); j++)
+        for(int j = 0; j<26; j++)
         {
-            if(height <= v[j])
+            if(height <= freq[j])
             {
                 cout<<"* ";
             }
@@ -46,7 +41,8 @@ int main()
         }
         cout<<endl;
     }
-    for(auto it:ch) cout<<it<<" ";
+    // for(auto it:ch) cout<<it<<" ";
+    for(char ch = 'a'; ch<='z'; ch++) cout<<ch<<" ";
     
     return 0;
 }
