@@ -7,17 +7,17 @@ int main()
     string s;
     getline(cin, s);
 
-    vector<int>v;
 
     int i = 0; 
-    int len = 0;
+    int v[51] ={0};
     int mxheight = 0;
+    int len = 0;
     while(s[i] != '\0')
     {   
         if(s[i] == ' ')
         {
-            v.push_back(len);
-            mxheight = max(mxheight, len);
+            v[len] = len;
+            if(mxheight < len) mxheight = len;
             len = 0;
             i++;
         }
@@ -26,18 +26,18 @@ int main()
             len++;
             i++;
         }
-
     }
 
-    mxheight = max(mxheight, len);
-    v.push_back(len);
-
+    if(mxheight < len) mxheight = len;
+    v[len] = len;
 
     for(int height = mxheight; height>0; height--)
     {
-        for(int j = 0; j<v.size(); j++)
+        for(int j = 0; j<=50; j++)
         {
-            if(height <= v[j])
+            if(v[j]==0) cout<<"  ";
+
+            else if(height <= v[j])
             {
                 cout<<"* ";
             }
@@ -48,7 +48,7 @@ int main()
         }
         cout<<endl;
     }
-    for(auto it:v) cout<<it<<" ";
+    for(int i=1; i<=50; i++) cout<<i<<" ";
 
 
     
