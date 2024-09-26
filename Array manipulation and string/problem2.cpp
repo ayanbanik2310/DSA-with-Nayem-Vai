@@ -2,12 +2,8 @@
 using namespace std;
 
 
-int main()
+void count_freq(string s, int (&freq)[26])
 {
-    string s;
-    getline(cin, s);
-    int freq[26] = {0};
-
     int i = 0;
     while(s[i] != '\0')
     {   
@@ -15,17 +11,21 @@ int main()
         i++; 
     }
 
-    vector<char> ch;
-    vector<int> v;
+}
+
+int count_mxheight(int freq[26])
+{
     int mxheight = 0;
 
     for(int i=0; i<26; i++)
     {
         if(mxheight<freq[i]) mxheight = freq[i];
     }
+    return mxheight;
+}
 
-
-
+void print_histogram(int mxheight, int freq[26])
+{
     for(int height = mxheight; height>0; height--)
     {
         for(int j = 0; j<26; j++)
@@ -41,8 +41,18 @@ int main()
         }
         cout<<endl;
     }
-    // for(auto it:ch) cout<<it<<" ";
     for(char ch = 'a'; ch<='z'; ch++) cout<<ch<<" ";
+}
+
+int main()
+{
+    string str;
+    getline(cin, str);
+    int freq[26] = {0};
+
+    count_freq(str, freq);
+    int mxheight = count_mxheight(freq);
+    print_histogram(mxheight, freq);
     
     return 0;
 }
