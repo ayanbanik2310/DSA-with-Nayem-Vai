@@ -10,8 +10,8 @@ void size_of_word(string s, int (&v)[51], int &mxheight)
     {   
         if(s[i] == ' ')
         {
-            v[len-1] = len;
-            if(mxheight < len) mxheight = len;
+            v[len-1]++;
+            if(mxheight < v[len-1]) mxheight = v[len-1];
             len = 0;
             i++;
         }
@@ -22,8 +22,8 @@ void size_of_word(string s, int (&v)[51], int &mxheight)
         }
     }
 
-    if(mxheight < len) mxheight = len;
-    v[len-1] = len;
+    if(mxheight < v[len-1]) mxheight = len;
+    v[len-1]++;
 }
 
 
